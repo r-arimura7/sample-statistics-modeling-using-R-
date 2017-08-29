@@ -138,9 +138,6 @@ educationprofessional.course   educationuniversity.degree
 ### 2.上記変数によるロジスティック回帰分析を実施
 
 #### 分析結果
-堅田コメント
-glmの結果を入れると良いと思います。具体的には、
-
 - glmのsummary
 ```
 glm(formula = y ~ job + education + default + poutcome, family = "binomial", 
