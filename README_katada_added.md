@@ -20,6 +20,7 @@
 glmの結果を入れると良いと思います。具体的には、
 
 - glmのsummary
+```
 Call:
 \glm(formula = y ~ job + education + default + poutcome, family = "binomial", \
     data = train_data)
@@ -61,6 +62,7 @@ Call:
     Null deviance: 13939  on 25946  degrees of freedom
     Residual deviance: 13550  on 25924  degrees of freedom
     AIC: 13596
+```
 
 
 
