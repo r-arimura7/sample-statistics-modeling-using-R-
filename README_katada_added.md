@@ -215,7 +215,7 @@ educationprofessional.course   educationuniversity.degree
 - 前提：1件あたり売上2000円、コスト500円。売上ーコストを最大化。　→閾値をいくらに設定するべきか？
 - 過去データを使った成約率は7.4%。売上ーコスト＝　→7.4% を閾値として使うべきか？
 - 閾値を1%から100%まで1%刻みで総当り
-![IMAGE](after_1.jpeg)
+![IMAGE](Rplot.png)
 - 最大ROIは　千円、閾値は17%
 
 ### 4.LTVからコストを差し引いたものを計算
