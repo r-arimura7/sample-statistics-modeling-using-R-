@@ -24,11 +24,11 @@ Call:
 \glm(formula = y ~ job + education + default + poutcome, family = "binomial", \
     data = train_data)
 
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.4641  -0.4070  -0.3834  -0.3216   2.5805  
+    Deviance Residuals: 
+        Min       1Q   Median       3Q      Max  
+    -1.4641  -0.4070  -0.3834  -0.3216   2.5805  
 
-Coefficients:
+    Coefficients:
                                Estimate Std. Error z value Pr(>|z|)    
 (Intercept)                   -2.600356   0.136623 -19.033  < 2e-16 ***
 jobblue-collar                -0.067198   0.088211  -0.762   0.4462    
