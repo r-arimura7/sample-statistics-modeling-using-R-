@@ -21,7 +21,7 @@ glmの結果を入れると良いと思います。具体的には、
 
 - glmのsummary
 Call:
-glm(formula = y ~ job + education + default + poutcome, family = "binomial", 
+\glm(formula = y ~ job + education + default + poutcome, family = "binomial", \
     data = train_data)
 
 Deviance Residuals: 
