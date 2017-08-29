@@ -214,7 +214,9 @@ educationprofessional.course   educationuniversity.degree
 - 過去データを使った成約率は7.4%。売上ーコスト＝31.5千円　→7.4% を閾値として使うべきか？
 - 閾値を1%から100%まで1%刻みで総当り
 ![IMAGE](Rplot.png)
-- 最大ROIは33.5千円、閾値は17%
+- 閾値は17%
 
-### 4.LTVからコストを差し引いたものを計算
+### 4.ROI = LTV - コスト
+- LTV140千円　- コスト
+- 最大ROIは33.5千円、閾値は17%
 
