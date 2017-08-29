@@ -82,7 +82,58 @@ AIC: 8655.4
 Number of Fisher Scoring iterations: 10
 
 ```
-
+-オッズ比はこんな感じ
+```
+> exp(hr_data.lr$coefficients)
+                 (Intercept)                          age 
+                0.000000e+00                 1.000037e+00 
+               jobmanagement                   jobretired 
+                9.849474e-01                 1.842615e+00 
+                 jobservices                   jobstudent 
+                8.492421e-01                 1.565054e+00 
+                  jobunknown               maritalmarried 
+                9.116194e-01                 9.985486e-01 
+               maritalsingle               maritalunknown 
+                1.095671e+00                 1.170148e+00 
+           educationbasic.6y            educationbasic.9y 
+                1.146469e+00                 1.289149e+00 
+        educationhigh.school          educationilliterate 
+                1.241168e+00                 5.492149e+00 
+educationprofessional.course   educationuniversity.degree 
+                1.384805e+00                 1.484969e+00 
+            educationunknown               defaultunknown 
+                1.280489e+00                 7.964446e-01 
+                  defaultyes               housingunknown 
+                7.996451e-04                 8.140862e-01 
+                  housingyes                  loanunknown 
+                9.808996e-01                           NA 
+                     loanyes             contacttelephone 
+                9.201162e-01                 8.220189e-01 
+                    monthaug                     monthdec 
+                1.021772e+32                 8.333133e+34 
+                    monthjul                     monthjun 
+                1.755806e+12                 5.038994e-09 
+                    monthmar                     monthmay 
+                8.970985e+08                 5.551747e+06 
+                    monthnov                     monthoct 
+                2.203813e+19                 2.429680e-01 
+              day_of_weekmon               day_of_weekthu 
+                1.106982e+00                 1.193808e+00 
+              day_of_weektue               day_of_weekwed 
+                1.175981e+00                 1.302714e+00 
+                    duration                     campaign 
+                1.005050e+00                 9.711792e-01 
+                       pdays                     previous 
+                1.000234e+00                 8.776918e-01 
+         poutcomenonexistent              poutcomesuccess 
+                1.639180e+00                 8.886791e+00 
+                emp.var.rate               cons.price.idx 
+                3.958618e-14                 9.450624e+37 
+               cons.conf.idx                    euribor3m 
+                5.467041e-01                 5.359518e-01 
+                 nr.employed 
+                          NA 
+```
 
 ### 2.上記変数によるロジスティック回帰分析を実施
 
@@ -135,19 +186,34 @@ Number of Fisher Scoring iterations: 9
 
 - 変数選択の方法
 - オッズ比とその解釈
-- もし可能であればデータ可視化したグラフなどもあればなお良いと思います。
+```
+> exp(c_data.lz$coefficients)
+                 (Intercept)                jobmanagement 
+                0.0736887680                 0.9090464638 
+                  jobretired                  jobservices 
+                1.8779586159                 0.8642280264 
+                  jobstudent                   jobunknown 
+                2.6254900829                 0.9269689422 
+           educationbasic.6y            educationbasic.9y 
+                1.0736910404                 1.0636176467 
+        educationhigh.school          educationilliterate 
+                1.1254855584                 4.0595584052 
+educationprofessional.course   educationuniversity.degree 
+                1.0997072113                 1.3329840816 
+            educationunknown               defaultunknown 
+                1.1383447713                 0.6060622389 
+                  defaultyes          poutcomenonexistent 
+                0.0003327009                 1.0314186473 
+             poutcomesuccess 
+                8.8315905934 ```
 
 
 
 ### 3.利益を最大化する閾値求める ⇒　#フラグたてる：口座作る1ないしは口座作らない0
 
-堅田コメント
 - コストを500円、売上を2000円として考えているなど、想定事項を記載すると良いと思います
 - 横軸に閾値、縦軸にnet_profitをとったグラフなどがあると良いと思います。
-- また、最大のROIとその閾値を記載するt良いと思います。
-
-- 0から1まで総当たりした場合のフラグをypred_flagに格納し
-- どのx（閾値）がnet_profitを最大化するかを求める。
+- 最大ROIは　千円、閾値は17%
 
 ### 4.LTVからコストを差し引いたものを計算
 
