@@ -14,6 +14,74 @@
 - 他にもマクロ経済要因（インフレ、金利、景況）は無視しがたいが、Euribor3Mなどのデータもあるが今のところは無視、時系列分析？）
 
 ちなみに全要素で重回帰分析するとこんな感じになる。
+```
+glm(formula = y ~ ., family = "binomial", data = train_data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-6.2486  -0.2647  -0.1726  -0.1281   3.2189  
+
+Coefficients: (2 not defined because of singularities)
+                               Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                  -8.226e+03  5.919e+03  -1.390 0.164637    
+age                           3.650e-05  3.660e-03   0.010 0.992042    
+jobmanagement                -1.517e-02  1.241e-01  -0.122 0.902751    
+jobretired                    6.112e-01  1.701e-01   3.592 0.000328 ***
+jobservices                  -1.634e-01  1.199e-01  -1.363 0.173003    
+jobstudent                    4.479e-01  1.872e-01   2.393 0.016702 *  
+jobunknown                   -9.253e-02  8.117e-02  -1.140 0.254274    
+maritalmarried               -1.452e-03  9.900e-02  -0.015 0.988294    
+maritalsingle                 9.137e-02  1.110e-01   0.823 0.410379    
+maritalunknown                1.571e-01  5.566e-01   0.282 0.777715    
+educationbasic.6y             1.367e-01  1.685e-01   0.811 0.417259    
+educationbasic.9y             2.540e-01  1.324e-01   1.919 0.055030 .  
+educationhigh.school          2.161e-01  1.317e-01   1.641 0.100795    
+educationilliterate           1.703e+00  1.029e+00   1.656 0.097736 .  
+educationprofessional.course  3.256e-01  1.369e-01   2.378 0.017426 *  
+educationuniversity.degree    3.954e-01  1.284e-01   3.079 0.002079 ** 
+educationunknown              2.472e-01  1.856e-01   1.332 0.182856    
+defaultunknown               -2.276e-01  8.536e-02  -2.666 0.007670 ** 
+defaultyes                   -7.131e+00  1.971e+02  -0.036 0.971143    
+housingunknown               -2.057e-01  2.144e-01  -0.960 0.337274    
+housingyes                   -1.929e-02  5.998e-02  -0.322 0.747809    
+loanunknown                          NA         NA      NA       NA    
+loanyes                      -8.326e-02  8.379e-02  -0.994 0.320426    
+contacttelephone             -1.960e-01  1.345e-01  -1.457 0.145000    
+monthaug                      7.370e+01  5.307e+01   1.389 0.164893    
+monthdec                      8.041e+01  5.651e+01   1.423 0.154744    
+monthjul                      2.819e+01  2.027e+01   1.391 0.164190    
+monthjun                     -1.911e+01  1.384e+01  -1.380 0.167443    
+monthmar                      2.061e+01  1.348e+01   1.529 0.126296    
+monthmay                      1.553e+01  1.177e+01   1.319 0.187081    
+monthnov                      4.454e+01  3.294e+01   1.352 0.176379    
+monthoct                     -1.415e+00  3.447e+00  -0.410 0.681469    
+day_of_weekmon                1.016e-01  9.700e-02   1.048 0.294740    
+day_of_weekthu                1.771e-01  9.425e-02   1.880 0.060164 .  
+day_of_weektue                1.621e-01  9.955e-02   1.628 0.103445    
+day_of_weekwed                2.644e-01  9.714e-02   2.722 0.006480 ** 
+duration                      5.038e-03  9.904e-05  50.864  < 2e-16 ***
+campaign                     -2.924e-02  1.475e-02  -1.983 0.047415 *  
+pdays                         2.338e-04  1.100e-03   0.213 0.831707    
+previous                     -1.305e-01  3.050e-01  -0.428 0.668819    
+poutcomenonexistent           4.942e-01  3.397e-01   1.455 0.145715    
+poutcomesuccess               2.185e+00  1.093e+00   1.999 0.045603 *  
+emp.var.rate                 -3.086e+01  2.147e+01  -1.437 0.150625    
+cons.price.idx                8.744e+01  6.297e+01   1.389 0.164934    
+cons.conf.idx                -6.038e-01  4.490e-01  -1.345 0.178675    
+euribor3m                    -6.237e-01  8.122e-01  -0.768 0.442539    
+nr.employed                          NA         NA      NA       NA    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 13938.9  on 25946  degrees of freedom
+Residual deviance:  8565.4  on 25902  degrees of freedom
+AIC: 8655.4
+
+Number of Fisher Scoring iterations: 10
+
+```
 
 
 ### 2.上記変数によるロジスティック回帰分析を実施
