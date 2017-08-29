@@ -1,17 +1,17 @@
 library(MASS)
 setwd("~/practical-stats-modeling/")
 
-#ƒf[ƒ^æ‚è‚İ
+#ãƒ‡ãƒ¼ã‚¿å–ã‚Šè¾¼ã¿
 candidate_data<-read.csv("homework_data/bank_marketing_train.csv")
 
-# #ŠwKƒf[ƒ^‚ÆƒeƒXƒgƒf[ƒ^‚É•ªŠ„‚µ‚Ä‚¨‚«‚Ü‚·i‚ ‚Æ‚Å—\‘ª‚Ìƒfƒ‚‚Ì‚½‚ßj
+# #å­¦ç¿’ãƒ‡ãƒ¼ã‚¿ã¨ãƒ†ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿ã«åˆ†å‰²ã—ã¦ãŠãã¾ã™ï¼ˆã‚ã¨ã§äºˆæ¸¬ã®ãƒ‡ãƒ¢ã®ãŸã‚ï¼‰
 # train_idx<-sample(c(1:dim(candidate_data)[1]), size = dim(candidate_data)[1]*0.7)
 # train<-candidate_data[train_idx, ]
 # test<-candidate_data[-train_idx, ]
 
 
-#ŠwK—p(train_data)‚ÆƒeƒXƒg—p(validation_data)‚Éƒf[ƒ^‚ğ•ª‚¯‚é
-set.seed(1234)  # ƒR[ƒh‚ÌÄŒ»«‚ğ•Û‚Â‚½‚ßseed‚ğŒÅ’è
+#å­¦ç¿’ç”¨(train_data)ã¨ãƒ†ã‚¹ãƒˆç”¨(validation_data)ã«ãƒ‡ãƒ¼ã‚¿ã‚’åˆ†ã‘ã‚‹
+set.seed(1234)  # ã‚³ãƒ¼ãƒ‰ã®å†ç¾æ€§ã‚’ä¿ã¤ãŸã‚seedã‚’å›ºå®š
 num_rows<-dim(candidate_data)[1]
 num_rows
 idx<-c(1:num_rows)
@@ -20,25 +20,25 @@ train_data<-candidate_data[train_idx, ]
 validation_data<-candidate_data[-train_idx, ]
 
 
-#ƒf[ƒ^Šm”F
+#ãƒ‡ãƒ¼ã‚¿ç¢ºèª
 head(candidate_data)
 summary(candidate_data)
 class(candidate_data$education)
 
-#‘S‘Ì‚Ì¬–ñ—¦‚Í7.4%
+#å…¨ä½“ã®æˆç´„ç‡ã¯7.4%
 2747/(34321+2747)
 
 
-#‚Æ‚è‚ ‚¦‚¸‘S•Ï”‚ğ“ü‚ê‚Ä‚İ‚é
+#ã¨ã‚Šã‚ãˆãšå…¨å¤‰æ•°ã‚’å…¥ã‚Œã¦ã¿ã‚‹
 hr_data.lr<-glm(y~., data=train_data, family="binomial")
 summary(hr_data.lr)
 
-#ƒ‚ƒfƒ‹•Ï”iƒ^[ƒQƒbƒg‘wi‚è‚İj
-#job(Eí)Fˆø‘ŞÒ‚ÆŠw¶‚ª‘½‚¢ ‘¼‚ÌEí‚Í‘S‚ÄunknownƒJƒeƒSƒŠ[‚Ö
-#education(Šw—ğ)FŠw—ğ‚ª‚‚¢‚ÆŒûÀì‚è‚â‚·‚¢
-#defaultunknowniŒ³—˜•¥‚¢‚ğ•s—šs‚µ‚Ä‚È‚¢(’A‚µunknown‚ğ•s—šs‚µ‚Ä‚¢‚È‚¢‚Æ‰¼’è)j
-#poutcomesuccess(‰ß‹‚ÌƒLƒƒƒ“ƒy[ƒ“‚Åì¬‚½‚Ğ‚Æ‚ÍŒûÀì‚è‚â‚·‚¢i’A‚µ’èŠú—a‹à2‚Â‚à‚Â‚­‚é‚©H’ˆÓ‚ª•K—vj)
-#‘¼‚É‚àƒ}ƒNƒŒoÏ—vˆöiƒCƒ“ƒtƒŒA‹à—˜AŒi‹µj‚Í–³‹‚µ‚ª‚½‚¢‚ª¡‚Ì‚Æ‚±‚ë‚Í–³‹AŒn—ñ•ªÍHj
+#ãƒ¢ãƒ‡ãƒ«å¤‰æ•°ï¼ˆã‚¿ãƒ¼ã‚²ãƒƒãƒˆå±¤çµã‚Šè¾¼ã¿ï¼‰
+#job(è·ç¨®)ï¼šå¼•é€€è€…ã¨å­¦ç”ŸãŒå¤šã„ ä»–ã®è·ç¨®ã¯å…¨ã¦unknownã‚«ãƒ†ã‚´ãƒªãƒ¼ã¸
+#education(å­¦æ­´)ï¼šå­¦æ­´ãŒé«˜ã„ã¨å£åº§ä½œã‚Šã‚„ã™ã„
+#defaultunknownï¼ˆå…ƒåˆ©æ‰•ã„ã‚’ä¸å±¥è¡Œã—ã¦ãªã„(ä½†ã—unknownã‚’ä¸å±¥è¡Œã—ã¦ã„ãªã„ã¨ä»®å®š)ï¼‰
+#poutcomesuccess(éå»ã®ã‚­ãƒ£ãƒ³ãƒšãƒ¼ãƒ³ã§ä½œæˆãŸã²ã¨ã¯å£åº§ä½œã‚Šã‚„ã™ã„ï¼ˆä½†ã—å®šæœŸé é‡‘2ã¤ã‚‚ã¤ãã‚‹ã‹ï¼Ÿæ³¨æ„ãŒå¿…è¦ï¼‰)
+#ä»–ã«ã‚‚ãƒã‚¯ãƒ­çµŒæ¸ˆè¦å› ï¼ˆã‚¤ãƒ³ãƒ•ãƒ¬ã€é‡‘åˆ©ã€æ™¯æ³ï¼‰ã¯ç„¡è¦–ã—ãŒãŸã„ãŒä»Šã®ã¨ã“ã‚ã¯ç„¡è¦–ã€æ™‚ç³»åˆ—åˆ†æï¼Ÿï¼‰
 
 candidate_data$job[candidate_data$job=='housemaid']<-'unknown'
 candidate_data$job[candidate_data$job=='blue-collar']<-'unknown'
@@ -47,8 +47,8 @@ candidate_data$job[candidate_data$job=='self-employed']<-'unknown'
 candidate_data$job[candidate_data$job=='technician']<-'unknown'
 candidate_data$job[candidate_data$job=='unemployed']<-'unknown'
 
-#ƒJƒ^ƒ_’Ç‰Á Ä“xAŠwK—p(train_data)‚ÆƒeƒXƒg—p(validation_data)‚Éƒf[ƒ^‚ğ•ª‚¯‚é
-set.seed(1234) # ƒR[ƒh‚ÌÄŒ»«‚ğ•Û‚Â‚½‚ßseed‚ğŒÅ’è
+#å†åº¦ã€å­¦ç¿’ç”¨(train_data)ã¨ãƒ†ã‚¹ãƒˆç”¨(validation_data)ã«ãƒ‡ãƒ¼ã‚¿ã‚’åˆ†ã‘ã‚‹
+set.seed(1234) # ã‚³ãƒ¼ãƒ‰ã®å†ç¾æ€§ã‚’ä¿ã¤ãŸã‚seedã‚’å›ºå®š
 num_rows<-dim(candidate_data)[1]
 num_rows
 idx<-c(1:num_rows)
@@ -58,35 +58,34 @@ validation_data<-candidate_data[-train_idx, ]
 
 
 
-#ã‹L•Ï”‚É‚æ‚éd‰ñ‹A•ªÍÀ{
+#ä¸Šè¨˜å¤‰æ•°ã«ã‚ˆã‚‹é‡å›å¸°åˆ†æå®Ÿæ–½
 c_data.lz<-glm(y~job+education+default+poutcome, data=train_data, family='binomial')
 summary(c_data.lz)
 
-#ƒIƒbƒY”äŒŸo@
+#ã‚ªãƒƒã‚ºæ¯”æ¤œå‡ºã€€
 exp(c_data.lz$coefficients)
 
 #prediction (Output)
 mymodel<-glm(y~job+education+default+poutcome, data=train_data, family='binomial')
 summary(mymodel)
 
-#ì¬‚µ‚½ƒ‚ƒfƒ‹‚ğŒŸØ—pƒf[ƒ^‚É“K—p‚µA
-#ƒ}[ƒPƒeƒBƒ“ƒOƒLƒƒƒ“ƒy[ƒ“‚ÉƒŠƒAƒNƒVƒ‡ƒ“‚·‚éŠm—¦‚ğ‹‚ß‚Ü‚·
+#ä½œæˆã—ãŸãƒ¢ãƒ‡ãƒ«ã‚’æ¤œè¨¼ç”¨ãƒ‡ãƒ¼ã‚¿ã«é©ç”¨ã—ã€
+#ãƒãƒ¼ã‚±ãƒ†ã‚£ãƒ³ã‚°ã‚­ãƒ£ãƒ³ãƒšãƒ¼ãƒ³ã«ãƒªã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã™ã‚‹ç¢ºç‡ã‚’æ±‚ã‚ã‚‹
 score<-predict(mymodel, validation_data, type = "response")
 
-#ŠO‚ê’l‚ÌŒŸØFƒNƒbƒN‚Ì‹——£
+#å¤–ã‚Œå€¤ã®æ¤œè¨¼ï¼šã‚¯ãƒƒã‚¯ã®è·é›¢
 ck_dist<-cooks.distance(c_data.lz)
 4/length(ck_dist)
 max(ck_dist,na.rm=TRUE)
 plot(c_data.lz)
 
-#d‹¤ü«Šm”FVIF
+#é‡å…±ç·šæ€§ç¢ºèªVIF
 library(car)
 car::vif(mymodel)
 
-#ƒtƒ‰ƒO‚½‚Ä‚éFŒûÀì‚é1‚È‚¢‚µ‚ÍŒûÀì‚ç‚È‚¢0
-#0‚©‚ç1‚Ü‚Å‘“–‚½‚è‚µ‚½ê‡‚Ìƒtƒ‰ƒO‚ğypred_flag‚ÉŠi”[‚µ
-#ÅI“I‚É‹‚ß‚½‚¢‚Ì‚Í‚Ç‚Ìxiè‡’lj‚ªnet_profit‚ğÅ‘å‰»‚·‚é‚©‚ğ‹‚ß‚éB
-#Œ˜“c‚³‚ñƒR[ƒh‚±‚±‚©‚ç
+#ãƒ•ãƒ©ã‚°ãŸã¦ã‚‹ï¼šå£åº§ä½œã‚‹1ãªã„ã—ã¯å£åº§ä½œã‚‰ãªã„0
+#0ã‹ã‚‰1ã¾ã§ç·å½“ãŸã‚Šã—ãŸå ´åˆã®ãƒ•ãƒ©ã‚°ã‚’ypred_flagã«æ ¼ç´ã—
+#æœ€çµ‚çš„ã«æ±‚ã‚ãŸã„ã®ã¯ã©ã®xï¼ˆé–¾å€¤ï¼‰ãŒnet_profitã‚’æœ€å¤§åŒ–ã™ã‚‹ã‹ã‚’æ±‚ã‚ã‚‹ã€‚
 
 precision<-NULL
 roi<-NULL
@@ -94,56 +93,56 @@ roi<-NULL
 for(i in 1:length(x)){
   ypred_flag<-ifelse(score > x[i], 1, 0)
   
-  #confusion matrix‚ğì¬
+  #confusion matrixã‚’ä½œæˆ
   conf_mat<-table(validation_data$y, ypred_flag )
   
-  #score‚ªè‡’lˆÈã‚Ìl = conf_mat[3]‚Æcon_mat[4]‚Ì‡Œv‚É“d˜b‚©‚¯‚é
+  #scoreãŒé–¾å€¤ä»¥ä¸Šã®äºº = conf_mat[3]ã¨con_mat[4]ã®åˆè¨ˆã«é›»è©±ã‹ã‘ã‚‹
   attack_num<-conf_mat[3] + conf_mat[4]
   
-  #“d˜b‚ğ‚·‚é‚½‚Ñ‚É500‰~‚©‚©‚é‚Ì‚ÅAƒRƒXƒg‚ğyour_cost‚ÉŠi”[
+  #é›»è©±ã‚’ã™ã‚‹ãŸã³ã«500å††ã‹ã‹ã‚‹ã®ã§ã€ã‚³ã‚¹ãƒˆã‚’your_costã«æ ¼ç´
   your_cost <- attack_num * 500
   
-  #ˆê•ûA“d˜b‚ğ‚µ‚Ä\‚µ‚ñ‚Å‚­‚ê‚él= conf_mat[4]‚Ìl”‚É2000‰~‚©‚¯‚Ä”„ã‚ğŒvZ
+  #ä¸€æ–¹ã€é›»è©±ã‚’ã—ã¦ç”³ã—è¾¼ã‚“ã§ãã‚Œã‚‹äºº= conf_mat[4]ã®äººæ•°ã«2000å††ã‹ã‘ã¦å£²ä¸Šã‚’è¨ˆç®—
   expected_revenue<-conf_mat[4] * 2000
   
-  #”„ã‚©‚çƒRƒXƒg‚ğˆø‚¢‚Ä‘e—˜ = ROI‚ğŒvZ
+  #å£²ä¸Šã‹ã‚‰ã‚³ã‚¹ãƒˆã‚’å¼•ã„ã¦ç²—åˆ© = ROIã‚’è¨ˆç®—
   tmp_roi<-expected_revenue - your_cost
   
-  #“d˜b‚ğ‚©‚¯‚½l‚Ì‚¤‚¿A¬Œ÷‚·‚éŠ„‡ = Precision‚ğŒvZ
+  #é›»è©±ã‚’ã‹ã‘ãŸäººã®ã†ã¡ã€æˆåŠŸã™ã‚‹å‰²åˆ = Precisionã‚’è¨ˆç®—
   tmp_precision<-conf_mat[4]/attack_num
   
-  #precision‚Éappend‚·‚é
+  #precisionã«appendã™ã‚‹
   precision<-c(precision, tmp_precision)
   
-  #roi‚Éappend
+  #roiã«append
   roi<-c(roi,tmp_roi)
 }
-# For•¶‚±‚±‚Ü‚Å
+# Foræ–‡ã“ã“ã¾ã§
 
 conf_mat
 
 plot(x, precision, type="l")
 plot(x, roi, type="l")
 
-#”„ã‚ªÅ‘å‚É‚È‚éè‡’l‚Í?
+#å£²ä¸ŠãŒæœ€å¤§ã«ãªã‚‹é–¾å€¤ã¯?
 max(roi, na.rm = T)
 
-#”„ã‚ªÅ‘å‚É‚È‚é‚Æ‚«‚Ìè‡’l‚ÍH
+#å£²ä¸ŠãŒæœ€å¤§ã«ãªã‚‹ã¨ãã®é–¾å€¤ã¯ï¼Ÿ
 x[which(roi==max(roi, na.rm = T))]
 
-#threshold‚ÉZo‚µ‚½è‡’l‚ğ“ü—Í
+#thresholdã«ç®—å‡ºã—ãŸé–¾å€¤ã‚’å…¥åŠ›
 
 threshold<-x[which(roi==max(roi, na.rm = T))]
 threshold
 
 my_func<-function(dataset){
-  #ŠwKÏ‚İ‚Ìƒ‚ƒfƒ‹‚ğg‚Á‚ÄAscore‚ğŒvZ
+  #å­¦ç¿’æ¸ˆã¿ã®ãƒ¢ãƒ‡ãƒ«ã‚’ä½¿ã£ã¦ã€scoreã‚’è¨ˆç®—
   score<-predict(mymodel, newdata = dataset, type="response")
   
-  #Œˆ‚ß‚Ä‚¢‚½‚¾‚¢‚½è‡’l‚Åflag‚ğ‚½‚Ä‚é
+  #æ±ºã‚ã¦ã„ãŸã ã„ãŸé–¾å€¤ã§flagã‚’ãŸã¦ã‚‹
   ypred_flag<-ifelse(score > threshold, 1, 0)
   
-  #‚Ç‚Ìl‚É“d˜b‚ğ‚·‚é‚© ‰Ë“d‚·‚é = 1, ‚µ‚È‚¢ = 0@‚Åo—Í
+  #ã©ã®äººã«é›»è©±ã‚’ã™ã‚‹ã‹ æ¶é›»ã™ã‚‹ = 1, ã—ãªã„ = 0ã€€ã§å‡ºåŠ›
   return(ypred_flag)
 }
 
